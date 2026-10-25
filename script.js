@@ -2,7 +2,7 @@ const URL = "https://teachablemachine.withgoogle.com/models/ybqPk8MrH/";
 let model, maxPredictions;
 let fileUploaded = false;
 
-// Load the model when the page loads
+
 async function loadModel() {
     const modelURL = URL + "model.json";
     const metadataURL = URL + "metadata.json";
@@ -67,10 +67,10 @@ async function runAnalysis() {
 
     const imageElement = document.getElementById('imagePreview');
     
-    // Run predictions
+
     let predictions = await model.predict(imageElement);
 
-    // Sort predictions highest to lowest probability
+
     predictions.sort((a, b) => b.probability - a.probability);
     const bestPrediction = predictions[0];
 
@@ -79,16 +79,16 @@ async function runAnalysis() {
                              topClassName.toLowerCase().includes('ripe') || 
                              topClassName.toLowerCase().includes('overripe');
 
-    // Filter predictions based on whether it is a banana category or non-banana
+
     if (isBananaCategory) {
         predictions = predictions.filter(p => {
             const name = p.className.toLowerCase();
             return name.includes('unripe') || name.includes('ripe') || name.includes('overripe');
         });
-        // Re-sort among the filtered banana classes
+
         predictions.sort((a, b) => b.probability - a.probability);
     } else {
-        // If it's not a banana (e.g. "Not a Banana" or "Empty"), show only that top prediction
+
         predictions = [bestPrediction];
     }
 
@@ -96,7 +96,7 @@ async function runAnalysis() {
     const className = currentBest.className;
     const topScore = (currentBest.probability * 100).toFixed(1) + '%';
 
-    // Populate Breakdown Matrix dynamically with filtered classes
+
     const breakdownContainer = document.getElementById('classBreakdownContainer');
     breakdownContainer.innerHTML = '';
     
@@ -116,7 +116,7 @@ async function runAnalysis() {
         breakdownContainer.appendChild(row);
     });
 
-    // Contextual details based on top class name
+
     let tip = "Store according to optimal standard conditions.";
     let shelfLife = "3 - 5 Days";
     let qualityStatus = "Standard Grade";
@@ -144,7 +144,7 @@ async function runAnalysis() {
         qualityStatus = "Not a Banana";
     }
 
-    // Update UI elements
+
     document.getElementById('resultPlaceholder').classList.add('hidden');
     document.getElementById('resultData').classList.remove('hidden');
     document.getElementById('timestampBadge').classList.remove('hidden');
@@ -155,7 +155,7 @@ async function runAnalysis() {
     document.getElementById('qualityStatusText').innerText = qualityStatus;
     document.getElementById('storageTip').innerText = tip;
 
-    // Reset Button State
+
     classifyBtn.disabled = false;
     classifyBtn.className = "mt-6 w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3.5 px-4 rounded-xl transition-all duration-200 cursor-pointer text-sm shadow-sm flex items-center justify-center space-x-2";
     btnText.innerText = "Re-run Analysis";

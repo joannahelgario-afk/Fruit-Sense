@@ -12,7 +12,7 @@
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col justify-between selection:bg-emerald-100 selection:text-emerald-800">
 
-    <!-- Header -->
+
     <header class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-xs">
         <div class="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
             <div class="flex items-center space-x-3">
@@ -34,7 +34,7 @@
         </div>
     </header>
 
-    <!-- Main Container -->
+
     <main class="max-w-6xl mx-auto px-6 py-10 w-full flex-grow">
         <div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
@@ -48,10 +48,10 @@
 
         <div class="grid md:grid-cols-12 gap-8 items-start">
             
-            <!-- Left: Upload & Camera Section -->
+
             <div class="md:col-span-6 bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm">
                 
-                <!-- Action Controls -->
+
                 <div class="grid grid-cols-2 gap-3 mb-5">
                     <button onclick="document.getElementById('imageUpload').click()" class="flex items-center justify-center space-x-2 bg-slate-50 hover:bg-slate-100 text-slate-700 font-medium py-3 px-4 rounded-xl border border-slate-200 transition text-sm cursor-pointer shadow-2xs">
                         <svg class="h-4 w-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -69,7 +69,7 @@
                     </button>
                 </div>
 
-                <!-- Preview Area Frame -->
+
                 <div class="border-2 border-dashed border-slate-200 rounded-xl p-4 text-center bg-slate-50/50 flex flex-col items-center justify-center min-h-[340px] relative overflow-hidden group">
                     <div id="uploadPrompt" class="space-y-3 py-10">
                         <div class="h-14 w-14 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto shadow-sm">
@@ -83,12 +83,12 @@
                         </div>
                     </div>
 
-                    <!-- Image Preview Container -->
+
                     <div id="previewContainer" class="hidden relative w-full h-full flex items-center justify-center">
                         <img id="imagePreview" class="max-h-80 rounded-lg object-contain shadow-md mx-auto" alt="Preview">
                     </div>
                     
-                    <!-- Hidden inputs -->
+
                     <input type="file" id="imageUpload" accept="image/png, image/jpeg" class="hidden" onchange="processFile(this.files[0])">
                     <input type="file" id="cameraCapture" accept="image/*" capture="camera" class="hidden" onchange="processFile(this.files[0])">
                 </div>
@@ -99,7 +99,7 @@
                 </div>
             </div>
 
-            <!-- Right: Results & Analytics Panel -->
+
             <div class="md:col-span-6 bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm flex flex-col justify-between min-h-[440px]">
                 <div>
                     <div class="flex justify-between items-center mb-5 border-b border-slate-100 pb-3">
@@ -116,10 +116,10 @@
                         Run analysis to evaluate ripeness levels.
                     </div>
 
-                    <!-- Result Data Display -->
+
                     <div id="resultData" class="hidden space-y-5">
                         
-                        <!-- Primary Classification Badge -->
+
                         <div class="bg-gradient-to-r from-emerald-50 to-teal-50/50 border border-emerald-100 rounded-xl p-4 flex items-center justify-between">
                             <div>
                                 <span class="text-[11px] font-bold text-emerald-700 uppercase tracking-wide block">Primary Classification</span>
@@ -131,15 +131,14 @@
                             </div>
                         </div>
 
-                        <!-- Multi-Class Breakdown Meters -->
+  
                         <div>
                             <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-3">Confidence Breakdown Matrix</span>
                             <div id="classBreakdownContainer" class="space-y-2.5">
-                                <!-- Dynamically filled via JS -->
                             </div>
                         </div>
 
-                        <!-- Estimated Shelf Life & Handling Tip Grid -->
+
                         <div class="grid grid-cols-2 gap-3">
                             <div class="bg-slate-50 border border-slate-200/60 rounded-xl p-3.5">
                                 <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wide block mb-1">Estimated Shelf Life</span>
@@ -151,7 +150,7 @@
                             </div>
                         </div>
 
-                        <!-- Storage Tip -->
+
                         <div class="bg-amber-50/60 border border-amber-200/60 rounded-xl p-4">
                             <span class="text-[11px] font-bold text-amber-800 uppercase tracking-wide block mb-1">Recommended Action & Storage</span>
                             <p id="storageTip" class="text-xs text-amber-900 leading-relaxed">-</p>
@@ -166,18 +165,18 @@
         </div>
     </main>
 
-    <!-- Footer -->
+
     <footer class="bg-white border-t border-slate-200 py-4 mt-12">
         <div class="max-w-6xl mx-auto px-6 text-center text-xs text-slate-400">
             FruitSense Enterprise AI &bull; Application Development Prototype
         </div>
     </footer>
 
-    <!-- TensorFlow.js & Teachable Machine Libraries -->
+
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 
-    <!-- Link to external JavaScript -->
+
     <script src="script.js"></script>
 </body>
 </html>
